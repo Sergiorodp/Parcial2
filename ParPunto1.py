@@ -26,8 +26,11 @@ texto.grid(padx=10, pady=10,column=0, row=0)
 
 def parar ():
     print("paro")
+    global init
+    init = False
 
 def inicio ():
+    print("inicio")
     global init
     init = True
 
@@ -35,13 +38,12 @@ def cerrar ():
     root.destroy()
 
 def reiniciar ():
-    print("paro")
+    print("reinicio")
 
-def clock (cont):
-    
-    global timepo 
-
-    sleep(0.1)
+def clock ():
+    global timepo
+    global cont 
+    sleep(0.001)
     cont += 1
     if(cont == 10):
         timepo[0]+=1
@@ -67,15 +69,34 @@ boton = Button(root,
     command = inicio,
     bg = 'maroon4'
 )
-
 boton.grid(column = 2, row = 0)
+
+boton = Button(root,
+    text = "Parar",
+    command = parar,
+    bg = 'maroon4'
+)
+boton.grid(column = 3, row = 0)
+
+boton = Button(root,
+    text = "Cerrar",
+    command = cerrar,
+    bg = 'maroon4'
+)
+boton.grid(column = 4, row = 0)
+
+boton = Button(root,
+    text = "Reiniciar",
+    command = reiniciar,
+    bg = 'maroon4'
+)
+boton.grid(column = 5, row = 0)
 
 while(1):
     if(init):
-        clock(cont)
+        clock()
     mostrar()
-    texto.configure(text = hora + ":" + minutos + ":" + segundos
-    )
+    texto.configure(text = str(hora) + str(":") + str(minutos) + str(":") + str(segundos))
     root.update()
 
 #root.mainloop()

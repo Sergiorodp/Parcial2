@@ -10,16 +10,18 @@ root.title("punto2")
 sizex_circ = 40
 sizey_circ = 40
 
+
 placa = Arduino('COM3')
 it = util.Iterator(placa)
 it.start()
 
-pin_led1 = placa.digital[13]
-pin_led2 = placa.digital[12]
-pin_led3 = placa.digital[11]
-pin_led4 = placa.digital[10]
-pin_led5 = placa.digital[9]
-pin_led6 = placa.digital[8]
+
+pin_led1 = placa.get_pin('d:13:o')
+pin_led2 = placa.get_pin('d:12:o')
+pin_led3 = placa.get_pin('d:11:o')
+pin_led4 = placa.get_pin('d:10:o')
+pin_led5 = placa.get_pin('d:9:o')
+pin_led6 = placa.get_pin('d:8:o')
 
 draw = Canvas(root, width=800, height=600)
 draw.place(x = 0,y = 0)

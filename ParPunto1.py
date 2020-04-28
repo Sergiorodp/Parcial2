@@ -38,12 +38,18 @@ def cerrar ():
     root.destroy()
 
 def reiniciar ():
+    global timepo
+    global cont
     print("reinicio")
+    timepo[0] = 0
+    timepo[1] = 0
+    timepo[2] = 0
+    cont = 0
 
 def clock ():
     global timepo
     global cont 
-    sleep(0.001)
+    sleep(0.1)
     cont += 1
     if(cont == 10):
         timepo[0]+=1
@@ -93,10 +99,11 @@ boton = Button(root,
 boton.grid(column = 5, row = 0)
 
 while(1):
+    root.update()
     if(init):
         clock()
     mostrar()
     texto.configure(text = str(hora) + str(":") + str(minutos) + str(":") + str(segundos))
-    root.update()
+    
 
 #root.mainloop()
